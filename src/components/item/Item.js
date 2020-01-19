@@ -54,7 +54,7 @@ export default class Item extends Component {
      var rating='';
    
     return (
-      <div className={style.Item} style={{ backgroundImage: 'url('+imgPath+')' }} >
+      <div className={style.Item} style={{ backgroundImage: 'url('+imgPath+')' }}  data-toggle="modal" data-target="#myModal" >
         <div className={style.overlay}>
           <div className={style.title}>{this.props.show.title}</div>
           <div className={style.rating}>{this.state.imdbRating} /10</div>
@@ -62,6 +62,7 @@ export default class Item extends Component {
           <ListToggle />
         </div>
       </div>
+      
     );
   } 
 }
