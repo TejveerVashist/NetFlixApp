@@ -5,18 +5,6 @@ import style from './style.scss';
 import '../../global.css';
 import axios from 'axios';
 import hoc from '../../assets/img/posters/hoc.jpg'
-/**
- * @render react
- * @name Item
- * @description Netflix's title items
- * @example
- * <Item
- *   title='Demo List Item'
- *   rating={6}
- *   overview='This demo item brought you by the Bit team'
- *   backdrop='http://image.tmdb.org/t/p/original/aok7IhrbA83josNz9Dqh8tNA0Ao.jpg'
- * />
- */
 export default class Item extends Component {
  
   constructor(props){
@@ -54,7 +42,7 @@ export default class Item extends Component {
      var rating='';
    
     return (
-      <div className={style.Item} style={{ backgroundImage: 'url('+imgPath+')' }}  data-toggle="modal" data-target="#myModal" >
+      <div className={style.Item} style={{ backgroundImage: 'url('+imgPath+')' }}  data-toggle="modal" data-target="#myModal" onClick={this.props.loadTrailer}>
         <div className={style.overlay}>
           <div className={style.title}>{this.props.show.title}</div>
           <div className={style.rating}>{this.state.imdbRating} /10</div>

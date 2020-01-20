@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import style from './style.scss';
 import '../../global.css';
-/**
- * @name ListToggle
- * @description Button for adding items to favorites list
- * @example
- * <ListToggle />
- */
 export default class ListToggle extends Component {
   state = {
     toggled: false

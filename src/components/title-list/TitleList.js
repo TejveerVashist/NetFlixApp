@@ -42,7 +42,8 @@ export default class TitleList extends Component {
   state = {
     data: [],
     mounted: false,
-    imdbRating:''
+    imdbRating:'',
+    url:'https://www.youtube-nocookie.com/embed/NTzycsqxYJ0?rel=0&amp;amp;controls=0&amp;amp;showinfo=0'
   };
 
  
@@ -53,6 +54,11 @@ export default class TitleList extends Component {
 
   componentDidMount() {
       this.setState({ mounted: true });
+  }
+  setTrailerURL=(e)=>{
+    var newUrl='https://www.youtube-nocookie.com/embed/'+e+'?rel=0&amp;amp;controls=0&amp;amp;showinfo=0';
+    this.setState({url:newUrl})
+   console.log(e);
   }
 
   render() {
@@ -81,31 +87,31 @@ export default class TitleList extends Component {
     if(this.props.shows.length>0){
           MovieItem= this.props.shows.map((movie,i)=>{
                 return (
-                  <Item  show={movie} key={movie.title}  rating={this.state.imdbRating}/>
+                  <Item  show={movie} key={movie.trailer}  rating={this.state.imdbRating} loadTrailer={()=>this.setTrailerURL(movie.trailer)}/>
             );
           });
     }
-    var modal=<div class="container">
+    var modal=<div className="container">
   
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div className="modal fade" id="myModal" role="dialog">
+      <div className="modal-dialog modal-lg">
+        <div className="modal-content">
+          <div className="modal-header">
+            <button type="button" className="close" data-dismiss="modal">&times;</button>
             
           </div>
-          <div class="modal-body">
-          <iframe width='100%' height='450px' src="https://www.youtube-nocookie.com/embed/NTzycsqxYJ0?rel=0&amp;amp;controls=0&amp;amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+          <div className="modal-body">
+          <iframe width='100%' height='450px' src={this.state.url} frameborder="0" allowfullscreen=""></iframe>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
   </div>
     return (
-      <div className="container" >
+      <div >
       <div 
         ref={(r) => { this.titleCategory = r; }}
         className={style.TitleList} data-loaded={this.state.mounted}>

@@ -1,15 +1,6 @@
 import React from 'react';
 import style from './style.scss';
 import '../../global.css';
-/**
- * @render react
- * @name UserProfile
- * @description Displays the user profile
- * @example
- * <UserProfile
- *    username={"Ela loveface"}
- * />
- */
 const UserProfile = ({ username = 'Tejveer' }) => (
   <div className={style.UserProfile}>
     <div className={style.User}>

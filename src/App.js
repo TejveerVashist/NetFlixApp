@@ -6,20 +6,14 @@ import UserProfile from './components/user-profile';
 import Navigation from './components/navigation';
 import style from './App.scss';
 import './global.css';
-
-/**
- * @render react
- * @name App
- * @description Whole app composed to tiny bit components.
- * @example
- * <App />
- */
 class App extends Component {
-  apiKey = '87dfa1c669eea853da609d4968d294be';
+
  
   state = {
     searchTerm: '',
-    ResultsToShow: this.props.shows
+    ResultsToShow: this.props.shows,
+    searching:false
+
   };
 
   handleKeyUp=(e)=> {
@@ -27,6 +21,9 @@ class App extends Component {
   }
 
   handleChange=(e)=> {
+     if(e.target.value==''){
+      window.location.reload(false);
+    }
     this.setState({ searchTerm: e.target.value });
     const searchResult=this.state.ResultsToShow.filter((item)=>{
                var res=item.title.toLowerCase().indexOf(this.state.searchTerm.toLowerCase())
@@ -36,6 +33,9 @@ class App extends Component {
                return res>=0
     
     });
+    var search=true;
+    this.setState({ResultsToShow:searchResult,searching:search});
+   
     
   }
   render() {
@@ -49,13 +49,8 @@ class App extends Component {
           </div>
           <UserProfile username={"Tejveer"}/>
         </header>
-        <Hero slider={this.state.ResultsToShow[0]}/>
+        {(this.state.searching)?null:<Hero slider={this.state.ResultsToShow[0]} />}
         <TitleList title="Top Movies List" shows={this.state.ResultsToShow} />
-        {/*<TitleList title="Search Results" url={this.state.searchUrl} />
-        <TitleList title="Trending now" url='discover/movie?sort_by=popularity.desc&page=1' />
-        <TitleList title="Most watched in Horror" url='genre/27/movies?sort_by=popularity.desc&page=1' />
-        <TitleList title="Sci-Fi greats" url='genre/878/movies?sort_by=popularity.desc&page=1' />
-    <TitleList title="Comedy magic" url='genre/35/movies?sort_by=popularity.desc&page=1' />*/}
       </div>
     );
   }

@@ -2,13 +2,6 @@ import React from 'react';
 import style from './style.scss';
 import '../../global.css';
 
-/**
- * @render react
- * @name Logo component
- * @description It's a simple svg logo.
- * @example
- * <Logo />
- */
 const Logo = () => (
   <div className={style.Logo}>
     <svg version="1.1" width="300" height="81.386726" id="svg3262">

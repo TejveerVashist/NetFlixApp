@@ -3,14 +3,6 @@ import PropTypes from 'prop-types';
 import style from './style.scss';
 import '../../global.css';
 
-
-/**
- * @name HeroButton
- * @render react
- * @description CTA button for `Hero` featured content
- * @example
- * <HeroButton text="Im a Hero!" primary />
- */
 const HeroButton = ({ text, primary }) => (
   <a href="#" className={style.Button} data-primary={primary}>
     {text}
